@@ -77,7 +77,7 @@ p {
 }
 
 .menu-icon {
-  display: none;
+  /* display: none; */
   flex-direction: column;
   cursor: pointer;
   position: absolute;
@@ -130,8 +130,6 @@ section {
   padding-bottom: 50px;
 }
 .container {
-  max-width: 950px;
-  margin-inline: auto;
   text-align: center;
   background-color: white;
   border-radius: 5px;
@@ -140,12 +138,10 @@ section {
 
 .pro-koho__content {
   display: flex;
+  flex-direction: column;
   gap: 20px;
-  justify-content: space-evenly;
 }
 .pro-koho__item {
-  flex-basis: 25%;
-
   border-radius: 12px;
   padding: 20px;
   background-color: white;
@@ -157,12 +153,15 @@ section {
 }
 
 .hero {
-  background-image: url(images/caught-in-joy-ptVBlniJi50-unsplash.jpg);
-  background-position: center top;
-  background-size: cover;
+  /* background-image: url(images/caught-in-joy-ptVBlniJi50-unsplash.jpg); */
+  background-image: url(images/hero_kytary_mw960px_3097x1428px.png);
+  background-position: top center;
+  background-size: contain;
   background-repeat: no-repeat;
-  height: 100vh;
-  margin-top: 105px;
+  margin-top: 108px;
+  aspect-ratio: 3097 / 1428;
+  width: 100%;
+  height: auto;
 }
 
 .gallery__image {
@@ -191,46 +190,76 @@ a {
   color: var(--first-color);
 }
 
-@media (max-width: 1040px) {
-  .menu {
-    flex-direction: column;
-    display: none;
-    position: absolute;
-    top: 65px;
-    right: 15px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    z-index: 9;
-  }
-
-  .menu-toggle:checked + .menu-icon + .menu {
-    display: flex;
-  }
-
-  .menu-icon {
-    display: flex;
-  }
-  .menu-toggle:checked + .menu-icon span:nth-child(1) {
-    transform: rotate(45deg) translate(1px, 3px);
-    margin: 0;
-  }
-  .menu-toggle:checked + .menu-icon span:nth-child(2) {
-    opacity: 0;
-    margin: 0;
-  }
-
-  .menu-toggle:checked + .menu-icon span:nth-child(3) {
-    transform: rotate(-45deg) translate(1px, -3px);
-    margin: 0;
-  }
-  .pro-koho__content {
-    flex-direction: column;
-  }
-
-  .container {
-    margin: 0 20px;
-  }
+.menu {
+  flex-direction: column;
+  display: none;
+  position: absolute;
+  top: 65px;
+  right: 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 9;
 }
 
+.menu-toggle:checked + .menu-icon + .menu {
+  display: flex;
+}
+
+.menu-icon {
+  display: flex;
+}
+.menu-toggle:checked + .menu-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(1px, 3px);
+  margin: 0;
+}
+.menu-toggle:checked + .menu-icon span:nth-child(2) {
+  opacity: 0;
+  margin: 0;
+}
+
+.menu-toggle:checked + .menu-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(1px, -3px);
+  margin: 0;
+}
+
+.container {
+  margin: 0 20px;
+}
+
+@media (min-width: 760px) {
+  .pro-koho__content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pro-koho__item {
+    flex-basis: calc(50% - 20px); /* Adjusted for two items per row */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+}
+.container {
+  max-width: 960px;
+}
+
+@media (min-width: 960px) {
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+  .pro-koho__item {
+    flex-basis: calc(25% - 20px); /* Adjusted for four items per row */
+  }
+  .menu-icon {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    background-color: transparent;
+    border: none;
+    padding-right: 20px;
+  }
+}
