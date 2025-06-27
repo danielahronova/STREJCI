@@ -154,21 +154,63 @@ section {
 
 .hero {
   /* background-image: url(images/caught-in-joy-ptVBlniJi50-unsplash.jpg); */
-  background-image: url(images/hero_kytary_mw960px_3097x1428px.png);
+  background-image: url(images/hero_kytary_mw960px_3088x1259px.png);
   background-position: top center;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: 108px;
-  aspect-ratio: 3097 / 1428;
+  margin-top: 107px;
+  aspect-ratio: 3088 / 1259;
   width: 100%;
   height: auto;
 }
 
-.gallery__image {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
+.carousel {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
 }
+
+.carousel-track-container {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%;
+  display: block;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 2rem;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
 
 .footer {
   display: flex;

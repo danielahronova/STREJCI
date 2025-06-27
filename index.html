@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
 
 
 </head>
@@ -84,13 +85,32 @@
     <div class="container">
         <h2>Galerie</h2>
     
-    <div class="gallery">
-        <img class="gallery__image" class="gallery__image" src="images/abstral-official-fnYHoNUJUNQ-unsplash.jpg" alt="Placeholder Image 1" width="300" height="200">
-        <img class="gallery__image" src="https://via.placeholder.com/300" alt="Placeholder Image 2">
-        <img class="gallery__image" src="https://via.placeholder.com/300" alt="Placeholder Image 3">
-        <img class="gallery__image" src="https://via.placeholder.com/300" alt="Placeholder Image 4">  
+        <div class="carousel">
+            <button class="carousel-button prev">&#10094;</button>
+
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="gallery">
+                        <!-- Obrázky galerie -->
+                        <a href = "images/gallery-item_1_velky.jpg" data-pswp-width="5184" data-pswp-height="3456" class="gallery__item">
+                            <img src="images/gallery-item_1_maly.png" alt="Obrázek 1">
+                        </a>
+                        <a href = "images/gallery-item_2_velky.jpg" data-pswp-width="5710" data-pswp-height="3807" class="gallery__item">
+                            <img src="images/gallery-item_2_maly.png" alt="Obrázek 2">
+                        </a>
+                        <a href = "images/gallery-item_3_velky.jpg" data-pswp-width="5328" data-pswp-height="4000" class="gallery__item">
+                            <img src="images/gallery-item_3_maly.png" alt="Obrázek 3">
+                        </a>
+                        <a href = "images/gallery-item_4_velky.jpg" data-pswp-width="5564" data-pswp-height="3974" class="gallery__item">
+                            <img src="images/gallery-item_4_maly.png" alt="Obrázek 4">
+                        </a>
+                    </div>
+                </div>
+
+            <button class="carousel-button next">&#10095;</button>
+        </div>
     </div>      
 </section>
+
 <section class="calendar">
     <div class="container">
     <h2>Kalendář akcí</h2>
@@ -102,8 +122,87 @@
         <p>Web vytvořila <a href=#>Daniela</a></p>
 </footer>
 
+  <!-- Container pro PhotoSwipe + UI -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+
+    <!-- UI prvky -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Zavřít (Esc)"></button>
+        <button class="pswp__button pswp__button--zoom" title="Přiblížit/oddálit"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="pswp__button pswp__button--arrow--left" title="Předchozí (šipka vlevo)"></button>
+      <button class="pswp__button pswp__button--arrow--right" title="Další (šipka vpravo)"></button>
+    </div>
+  </div>
+</div>
+
+  <!-- Skripty PhotoSwipe -->
+  <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.umd.js"></script>
+  <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.umd.js"></script>
+
+<!-- Tvůj vlastní skript -->
+    <script>
+        const lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: 'a',
+        pswpModule: PhotoSwipe
+        });
+        lightbox.init();
+    </script>
+
+<!-- Karusel -->
+
+    <script>
     
+    const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-button.next');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        let currentSlide = 0;
+
+        function updateSlidePosition() {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = 'translateX(-' + (slideWidth * currentSlide) + 'px)';
+        }
+
+    nextButton.addEventListener('click', () => {
+        if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlidePosition();
+        }
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (currentSlide > 0) {
+        currentSlide--;
+        updateSlidePosition();
+        }
+    });
+
+    // Reakce na změnu velikosti okna (kvůli šířce slide)
+    window.addEventListener('resize', updateSlidePosition);
+
+    </script>
 </body>
+
+
 </html>
  
  
