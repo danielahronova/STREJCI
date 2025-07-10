@@ -124,19 +124,16 @@
 
 
   <!-- Skripty PhotoSwipe -->
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.umd.min.js"></script>
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+  import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js';
 
-<!-- Lightbox init -->
-<script>
- window.addEventListener('load', function () {
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '#gallery',
-      children: 'a',
-      pswpModule: PhotoSwipe
-    });
-    lightbox.init();
+const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery',
+    children: 'a',
+    pswpModule: () => PhotoSwipe
   });
+  lightbox.init();
 </script>
 
 <!-- Karusel -->
