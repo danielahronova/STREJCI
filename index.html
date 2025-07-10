@@ -127,14 +127,16 @@
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.umd.min.js"></script>
 
-<!-- Tvůj vlastní skript -->
+<!-- Lightbox init -->
 <script>
- const lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery',
-    children: 'a',
-    pswpModule: PhotoSwipe
+ window.addEventListener('load', function () {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery',
+      children: 'a',
+      pswpModule: PhotoSwipe
+    });
+    lightbox.init();
   });
-  lightbox.init();
 </script>
 
 <!-- Karusel -->
