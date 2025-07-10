@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Test PhotoSwipe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <style>
+    .gallery a img {
+      width: 150px;
+      height: auto;
+      margin: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Galerie</h1>
+
+  <div class="gallery" id="gallery">
+    <a 
+      href="images/gallery-item_1_velky.jpg" 
+      data-pswp-width="5184" 
+      data-pswp-height="3456">
+      <img src="images/gallery-item_1_maly.png" alt="Obrázek 1">
+    </a>
+    <a 
+      href="images/gallery-item_2_velky.jpg" 
+      data-pswp-width="5710" 
+      data-pswp-height="3807">
+      <img src="images/gallery-item_2_maly.png" alt="Obrázek 2">
+    </a>
+  </div>
+
+  <!-- JS knihovny -->
+  <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.umd.js"></script>
+  <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.umd.js"></script>
+
+  <!-- Inicializace -->
+  <script>
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery',
+      children: 'a',
+      pswpModule: PhotoSwipe
+    });
+    lightbox.init();
+  </script>
+
+</body>
+</html>
